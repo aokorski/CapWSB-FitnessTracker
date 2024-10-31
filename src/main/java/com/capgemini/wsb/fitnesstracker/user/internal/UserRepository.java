@@ -1,11 +1,13 @@
-package com.capgemini.wsb.fitnesstracker.user.internal;
+// UserRepository.java
 
-import com.capgemini.wsb.fitnesstracker.user.api.User;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+package com.capgemini.wsb.fitnesstracker.user.internal;
 
 import java.util.Objects;
 import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.capgemini.wsb.fitnesstracker.user.api.User;
 
 interface UserRepository extends JpaRepository<User, Long> {
 
@@ -17,8 +19,7 @@ interface UserRepository extends JpaRepository<User, Long> {
      */
     default Optional<User> findByEmail(String email) {
         return findAll().stream()
-                        .filter(user -> Objects.equals(user.getEmail(), email))
-                        .findFirst();
+                .filter(user -> Objects.equals(user.getEmail(), email))
+                .findFirst();
     }
-
 }

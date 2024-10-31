@@ -5,12 +5,21 @@ import com.capgemini.wsb.fitnesstracker.user.api.User;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
+@Service
 // TODO: Provide Impl
 public class TrainingServiceImpl implements TrainingProvider {
 
-    @Override
-    public Optional<User> getTraining(final Long trainingId) {
-        throw new UnsupportedOperationException("Not finished yet");
+    private final TrainingRepository trainingRepository;
+
+    public TrainingServiceImpl(TrainingRepository trainingRepository) {
+        this.trainingRepository = trainingRepository;
     }
 
+    @Override
+    public Optional<User> getTraining(final Long trainingId) {
+        return trainingRepository.findById(trainingId)
+                .map(training -> training.getUser());
+    }
 }

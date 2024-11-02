@@ -1,5 +1,3 @@
-// UserService.java
-
 package com.capgemini.wsb.fitnesstracker.user.api;
 
 import java.time.LocalDate;

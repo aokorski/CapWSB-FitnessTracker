@@ -22,4 +22,11 @@ public class TrainingServiceImpl implements TrainingProvider {
         return trainingRepository.findById(trainingId)
                 .map(training -> training.getUser());
     }
+
+    public void deleteTrainingByUserId(Long userId) {
+        trainingRepository.findAll().stream()
+                .filter(training -> training.getUser().getId().equals(userId))
+                .forEach(trainingRepository::delete);
+    }
+
 }

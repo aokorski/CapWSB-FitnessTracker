@@ -3,11 +3,10 @@ package com.capgemini.wsb.fitnesstracker.user.internal;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import com.capgemini.wsb.fitnesstracker.user.api.User;
+import com.capgemini.wsb.fitnesstracker.user.api.UserNotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -67,5 +66,25 @@ class UserController {
                 .toList();
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public User addUser(@RequestBody UserDto userDto) {
+        System.out.println("User with e-mail: " + userDto.email() + " passed to the request");
+        return userService.createUser(userMapper.toEntity(userDto));
+    }
+
+    @DeleteMapping("/{userId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteUser(@PathVariable Long userId) {
+        userService.deleteUser(userId);
+    }
+
+    @PutMapping("/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public User updateUser(@PathVariable Long userId, @RequestBody UserDto userDto) {
+        User existingUser = userService.getUser(userId).orElseThrow(() -> new UserNotFoundException(userId));
+        User updatedUser = userMapper.updateEntity(existingUser, userDto);
+        return userService.updateUser(updatedUser);
+    }
 
 }

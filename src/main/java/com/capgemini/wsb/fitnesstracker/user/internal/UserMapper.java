@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 import com.capgemini.wsb.fitnesstracker.user.api.User;
 
 @Component
-class UserMapper {
+public class UserMapper {
 
     /**
      * @param user
      * @return UserDto
      */
-    UserDto toDto(User user) {
+    public UserDto toDto(User user) {
         return new UserDto(user.getId(),
                 user.getFirstName(),
                 user.getLastName(),
@@ -53,7 +53,7 @@ class UserMapper {
      * @param userDto
      * @return User
      */
-    User toEntity(UserDto userDto) {
+    public User toEntity(UserDto userDto) {
         return new User(
                 userDto.firstName(),
                 userDto.lastName(),

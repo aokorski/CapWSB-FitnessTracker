@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "bdd14298-f2d7-4b9f-a46f-90f4145cc63a",
+		"name": "PostmanLAB03",
+		"description": "Kolekcja zapytań Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38890806"
+	},
+	"item": [
+		{
+			"name": "all trainings Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2137/v1/trainings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2137",
+					"path": [
+						"v1",
+						"trainings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "trainings by user id Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2137/v1/trainings/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2137",
+					"path": [
+						"v1",
+						"trainings",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "trainings after date Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2137/v1/trainings/finished/2024-01-13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2137",
+					"path": [
+						"v1",
+						"trainings",
+						"finished",
+						"2024-01-13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get trainings for activity type Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2137/v1/trainings/activity/activityType?activityType=RUNNING",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2137",
+					"path": [
+						"v1",
+						"trainings",
+						"activity",
+						"activityType"
+					],
+					"query": [
+						{
+							"key": "activityType",
+							"value": "RUNNING"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create training Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "                {\r\n                    \"userId\": \"1\",\r\n                    \"startTime\": \"2024-05-02T11:00:00\",\r\n                    \"endTime\": \"2024-05-02T12:30:00\",\r\n                    \"activityType\": \"CYCLING\",\r\n                    \"distance\": 25.3,\r\n                    \"averageSpeed\": 25.1\r\n                }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2137/v1/trainings",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2137",
+					"path": [
+						"v1",
+						"trainings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update training Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "                {\r\n                    \"userId\": \"1\",\r\n                    \"startTime\": \"2024-05-02T12:00:00\",\r\n                    \"endTime\": \"2024-05-02T12:30:00\",\r\n                    \"activityType\": \"CYCLING\",\r\n                    \"distance\": 8.9,\r\n                    \"averageSpeed\": 16.7\r\n                }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2137/v1/trainings/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2137",
+					"path": [
+						"v1",
+						"trainings",
+						"12"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}

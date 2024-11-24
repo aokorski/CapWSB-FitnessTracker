@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-class UserServiceImpl implements UserService, UserProvider {
+public class UserServiceImpl implements UserService, UserProvider {
 
     private final UserRepository userRepository;
     private final TrainingServiceImpl trainingServiceImpl;
@@ -54,12 +54,6 @@ class UserServiceImpl implements UserService, UserProvider {
      */
     @Override
     public void deleteUser(final Long userId) {
-        log.info("Deleting User {}", userId);
-        if (userId == null) {
-            throw new IllegalArgumentException("User not exists in DB, update is not permitted!");
-        }
-
-        trainingServiceImpl.deleteTrainingByUserId(userId);
         userRepository.deleteById(userId);
     }
 
